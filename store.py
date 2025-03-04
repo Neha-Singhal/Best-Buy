@@ -39,18 +39,18 @@ class Store:
 
 
 def main():
-         product_list = [
-             Product("MacBook Air M2", price=1450, quantity=100),
-             Product("Bose QuietComfort Earbuds", price=250, quantity=500),
-             Product("Google Pixel 7", price=500, quantity=250),
-         ]
+    product_list = [
+        Product("MacBook Air M2", price=1450, quantity=100),
+        Product("Bose QuietComfort Earbuds", price=250, quantity=500),
+        Product("Google Pixel 7", price=500, quantity=250),
+    ]
 
-         best_buy = Store(product_list)
-         # Get all active product
-         products = best_buy.get_all_products()
-         print("Total quantity in store:",best_buy.get_total_quantity())
-         order_cost = best_buy.order([(products[0], 1), (products[1], 2)])
-         print(f"Order cost: {order_cost} ")
+    best_buy = Store(product_list)
+    # Get all active product
+    products = best_buy.get_all_products()
+    print("Total quantity in store:",best_buy.get_total_quantity())
+    order_cost = best_buy.order([(products[0], 1), (products[1], 2)])
+    print(f"Order cost: {order_cost} ")
 
 
 if __name__ == "__main__":

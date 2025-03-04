@@ -54,11 +54,22 @@ def start(store_obj):
             print("\nWhen you want to finish ordering, enter empty text.")
 
             while True:
-                product_name = input("\nWhich product do you want? ").strip().lower()
+                product_name = input("\nWhich product # do you want? ").strip().lower()
                 if product_name == "":
                     break
+                product = None
 
-                product = next((p for p in available_products if p.name.lower() == product_name), None)
+                # Check if the input is a number (numeric selection)
+                if product_name.isdigit():
+                    product_number = int(product_name)
+                    if 1 <= product_number <= len(available_products):
+                        product = available_products[product_number - 1]
+                    else:
+                        print("Invalid product number. Please enter a valid number.")
+                        continue
+                else:
+                    # Check if the input matches a product name (name selection)
+                    product = next((p for p in available_products if p.name.lower() == product_name), None)
 
                 if not product:
                     print(f"Error: Product not found! Please enter a valid product name.")
@@ -74,7 +85,7 @@ def start(store_obj):
                         continue
 
                     shopping_list.append((product, quantity))
-                    print(f"Added {quantity} {product_name} to your cart.")
+                    print(f"Added {quantity} {product.name}to your cart.")
                 except ValueError:
                     print("Error: Please enter a valid number for quantity.")
 
